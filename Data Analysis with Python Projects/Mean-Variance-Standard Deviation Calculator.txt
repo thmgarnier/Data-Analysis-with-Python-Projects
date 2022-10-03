@@ -1,0 +1,35 @@
+# https://www.freecodecamp.org/learn/data-analysis-with-python/data-analysis-with-python-projects/mean-variance-standard-deviation-calculator
+# https://replit.com/@thmgarnier/boilerplate-mean-variance-standard-deviation-calculator#mean_var_std.py
+
+import numpy as np
+# mean, variance, standard deviation, max, min, and sum of the rows, columns, and elements in a 3 x 3 matrix.
+
+list = np.arange(0,9)
+
+def calculate(list):
+  if (len(list) != 9):
+    raise ValueError("List must contain nine numbers.")
+
+  list_conv = np.reshape(list, (3, 3))
+  
+  mean = [np.mean(list_conv, axis=0).tolist(), np.mean(list_conv, axis=1).tolist(), np.mean(list, axis=0)]
+  
+  variance = [np.var(list_conv, axis=0).tolist(), np.var(list_conv, axis=1).tolist(), np.var(list, axis=0)]
+
+  standard_deviation = [np.std(list_conv, axis=0).tolist(), np.std(list_conv, axis=1).tolist(), np.std(list, axis=0)]
+
+  max = [np.amax(list_conv, axis=0).tolist(), np.amax(list_conv, axis=1).tolist(), np.amax(list, axis=0)]
+   
+  min = [np.amin(list_conv, axis=0).tolist(), np.amin(list_conv, axis=1).tolist(), np.amin(list, axis=0)]
+  
+  sum = [np.sum(list_conv, axis=0).tolist(), np.sum(list_conv, axis=1).tolist(), np.sum(list, axis=0)]
+ 
+  calculations = {
+    "mean": mean,
+    "variance": variance,
+    "standard deviation": standard_deviation,
+    "max": max,
+    "min": min,
+    "sum": sum,
+  } 
+  return calculations
